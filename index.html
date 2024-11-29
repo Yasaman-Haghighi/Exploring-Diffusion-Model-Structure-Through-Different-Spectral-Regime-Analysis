@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exploring-Diffusion-Model-Structure-Through-Different-Spectral-Regime-Analysis</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <style>
+      .image-container {
+        display: grid; /* Arrange images in a grid */
+        grid-template-columns: repeat(2, 1fr); /* Two images per row */
+        gap: 10px; /* Add spacing between images */
+        justify-content: center; /* Center the grid */
+        margin-top: 20px; /* Add spacing from the top */
+      }
+      .video-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Four equal columns for videos */
+        gap: 10px; /* Space between items */
+        margin: 20px 0; /* Add vertical spacing between sections */
+        align-items: stretch; /* Ensure items fill the grid cell vertically */
+        justify-items: stretch; /* Ensure items fill the grid cell horizontally */
+      }
+      .video-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align descriptions and videos */
+    }
+
+    .video-description {
+      margin-bottom: 10px;
+      font-weight: bold; /* Make the description stand out */
+    }
+
+    .section-description {
+      margin-bottom: 30px;
+      font-size: 1.2em;
+      color: #555; /* Subtle color to differentiate from headings */
+    }
+      .content {
+      margin-bottom: 20px; /* Add space between sections (subtitles and videos) */
+      }
+      video, img {
+        width: 100%; /* Make both videos and GIFs fill their grid cells */
+        height: 100%; /* Fill the height of the grid cell */
+        border: 1px solid #ccc; /* Optional: Add a border */
+        border-radius: 5px; /* Optional: Add rounded corners */
+        object-fit: cover; /* Ensure content fills the container */
+      }
+     
+      .pseudo-video-container {
+      display: flex; /* Use flexbox for a row layout */
+      justify-content: space-between; /* Space out videos evenly */
+      align-items: center; /* Align videos vertically */
+      gap: 20px; /* Space between videos */
+      }
+      .pseudo-video-container video {
+      width: 50%; /* Each video takes 50% of the row */
+      height: 500px; /* Set a large height for the videos */
+      max-height: 100%; /* Prevent overflow */
+      border: 1px solid #ccc; /* Optional: Add a border */
+      border-radius: 5px; /* Optional: Add rounded corners */
+      object-fit: cover; /* Ensures the video content scales nicely */
+      }
+</style>
+   
+</head>
+<body>
+  <div style="background-color: #e6ffe6; padding: 10px; text-align: center; color: green; font-weight: bold;">
+    We recommend using Chrome for the best experience. Videos might not work on Safari.
+  </div>
+<section class="hero title-section" style="background-color: #f0f0f0;">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1">
+            Exploring-Diffusion-Model-Structure-Through-Different-Spectral-Regime-Analysis
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Other Sections -->
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-2">Unconditional Generations</h2>
+    <p class="section-description">
+      We show examples of unconditional generations.
+    </p>
+    <div class="image-container">
+      <img src="./static/images/kick_cond.png" alt="Image 1" class="content-image">
+      <img src="./static/images/kick_uncond.png" alt="Image 2" class="content-image">
+      <img src="./static/images/walk_cond.png" alt="Image 3" class="content-image">
+      <img src="./static/images/walk_cunond.png" alt="Image 4" class="content-image">
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>
