@@ -7,101 +7,304 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <style>
-      .image-container {
-        display: grid; /* Arrange images in a grid */
-        grid-template-columns: repeat(2, 1fr); /* Two images per row */
-        gap: 10px; /* Add spacing between images */
-        justify-content: center; /* Center the grid */
-        margin-top: 20px; /* Add spacing from the top */
-      }
-      .video-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Four equal columns for videos */
-        gap: 10px; /* Space between items */
-        margin: 20px 0; /* Add vertical spacing between sections */
-        align-items: stretch; /* Ensure items fill the grid cell vertically */
-        justify-items: stretch; /* Ensure items fill the grid cell horizontally */
-      }
-      .video-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center align descriptions and videos */
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two images per row */
+      gap: 20px; /* Add spacing between images */
+      justify-content: center;
+      margin-top: 20px;
     }
-
-    .video-description {
-      margin-bottom: 10px;
-      font-weight: bold; /* Make the description stand out */
+    .image-wrapper {
+      text-align: center;
     }
-
-    .section-description {
-      margin-bottom: 30px;
-      font-size: 1.2em;
-      color: #555; /* Subtle color to differentiate from headings */
-    }
-      .content {
-      margin-bottom: 20px; /* Add space between sections (subtitles and videos) */
-      }
-      video, img {
-        width: 100%; /* Make both videos and GIFs fill their grid cells */
-        height: 100%; /* Fill the height of the grid cell */
-        border: 1px solid #ccc; /* Optional: Add a border */
-        border-radius: 5px; /* Optional: Add rounded corners */
-        object-fit: cover; /* Ensure content fills the container */
-      }
-     
-      .pseudo-video-container {
-      display: flex; /* Use flexbox for a row layout */
-      justify-content: space-between; /* Space out videos evenly */
-      align-items: center; /* Align videos vertically */
-      gap: 20px; /* Space between videos */
-      }
-      .pseudo-video-container video {
-      width: 50%; /* Each video takes 50% of the row */
-      height: 500px; /* Set a large height for the videos */
-      max-height: 100%; /* Prevent overflow */
+    img {
+      width: 100%;
+      height: auto;
       border: 1px solid #ccc; /* Optional: Add a border */
       border-radius: 5px; /* Optional: Add rounded corners */
-      object-fit: cover; /* Ensures the video content scales nicely */
-      }
-</style>
-   
+    }
+    .caption {
+      margin-top: 5px;
+      font-style: italic;
+      color: #666;
+    }
+    .section {
+      margin-bottom: 40px; /* Add space between sections */
+    }
+    .subsection-title {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      text-align: center;
+      color: #444;
+    }
+    .description, .subsection-description {
+      text-align: center;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #555;
+    }
+    /* New CSS class for the image grid of 50 images */
+    .image-grid-10 {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr); /* Ten images per row */
+      gap: 10px; /* Adjust spacing as needed */
+      margin-top: 20px;
+    }
+    .image-grid-10 img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc; /* Optional: Add a border */
+      border-radius: 5px; /* Optional: Add rounded corners */
+    }
+  </style>
 </head>
 <body>
   <div style="background-color: #e6ffe6; padding: 10px; text-align: center; color: green; font-weight: bold;">
     We recommend using Chrome for the best experience. Videos might not work on Safari.
   </div>
-<section class="hero title-section" style="background-color: #f0f0f0;">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1">
-            Exploring-Diffusion-Model-Structure-Through-Different-Spectral-Regime-Analysis
-          </h1>
+
+  <section class="hero title-section" style="background-color: #f0f0f0;">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1">
+              Exploring-Diffusion-Model-Structure-Through-Different-Spectral-Regime-Analysis
+            </h1>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Other Sections -->
+  <!-- MNIST Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2">MNIST Dataset</h2>
+      <p class="description">MNIST is a dataset of handwritten digits which we use to visualize the structure of diffusion models.</p>
 
+      <!-- Canonical Base -->
+      <h3 class="subsection-title">Comparision between the canonical base and eigen base</h3>
+      <p class="subsection-description"> We display the average trajectory per class in the diffusion process along different axis. On the left we use the axis of the canonical base, while on the right we use the axis of an eigen base of the covariance matrix of the data. The colors correspond to the classes (digits). The vertical dash line correspond to the estimated transition time. The transitions are not visible in the canonical base.</p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_2k_projection_plot.png" alt="MNIST Canonical 1">
+          <div class="caption">Canonical base</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_eigenvector_base_projection_plot.png" alt="MNIST Canonical 2">
+          <div class="caption">Eigen base</div>
+        </div>
+      </div>
 
+      <!-- Eigenvalue Base -->
+      <h3 class="subsection-title">Comparision between PCA and Online PCA</h3>
+      <p class="subsection-description">We observe that the differences between the estimated eigen values using PCA and online PCA is marginal. This suggests that our proposed method can be applied in practical setups using online PCA approaches. </p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_eigenvector_base_projection_plot.png" alt="MNIST Eigen 1">
+          <div class="caption">PCA</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_approx_eigenvector_base_projection_plot.png" alt="MNIST Eigen 2">
+          <div class="caption">Online PCA</div>
+        </div>
+      </div>
+
+      <!-- All Trajectories -->
+      <h3 class="subsection-title">PCA versus Online PCA</h3>
+      <p class="subsection-description">These plots display all the trajectories regardless of the classes. </p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_speciation_200_true_projection_plot.jpg" alt="MNIST Trajectories 1">
+          <div class="caption">PCA</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/mnist_speciation_200_eigenvector_projection_plot.jpg" alt="MNIST Trajectories 2">
+          <div class="caption">Online PCA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIFAR-10 Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2">CIFAR-10 Dataset</h2>
+      <p class="description">CIFAR-10 dataset provides visualizations of diffusion models with colorful natural images like animals and vehicles.</p>
+
+      <!-- Canonical Base -->
+      <h3 class="subsection-title">Comparision between the canonical base and eigen base</h3>
+      <p class="subsection-description">We display the average trajectory per class in the diffusion process along different axis. On the left we use the axis of the canonical base, while on the right we use the axis of an eigen base of the covariance matrix of the data. The colors correspond to the classes. The vertical dash line correspond to the estimated transition time. The transitions are not visible in the canonical base.</p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_projection_plot.png" alt="CIFAR Canonical 1">
+          <div class="caption">Canonical base</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_eigenvector_2k_true_projection_plot.png" alt="CIFAR Canonical 2">
+          <div class="caption">Eigen base</div>
+        </div>
+      </div>
+
+      <!-- Eigenvalue Base -->
+      <h3 class="subsection-title">Comparision between PCA and Online PCA</h3>
+      <p class="subsection-description">We observe that the differences between the estimated eigen values using PCA and online PCA is marginal. This suggests that our proposed method can be applied in practical setups using online PCA approaches. </p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_eigenvector_2k_true_projection_plot.png" alt="CIFAR Eigen 1">
+          <div class="caption">PCA</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_eigenvector_2k_approx_projection_plot.png" alt="CIFAR Eigen 2">
+          <div class="caption">Online PCA</div>
+        </div>
+      </div>
+
+      <!-- All Trajectories -->
+      <h3 class="subsection-title">PCA versus Online PCA</h3>
+      <p class="subsection-description">These plots display all the trajectories regardless of the classes. </p>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_eigenvector_true_projection_plot.jpg" alt="CIFAR Trajectories 1">
+          <div class="caption">PCA</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="./static/images/cifar_eigenvector_base_projection_plot.jpg" alt="CIFAR Trajectories 2">
+          <div class="caption">Online PCA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ImageNet Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2">ImageNet Dataset</h2>
+      <p class="description" style="color: red;">Ongoing!</p>
+    </div>
+  </section>
+
+ <!-- Conditional Generation Section -->
 <section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-2">Unconditional Generations</h2>
-    <p class="section-description">
-      We show examples of unconditional generations.
-    </p>
-    <div class="image-container">
-      <img src="./static/images/kick_cond.png" alt="Image 1" class="content-image">
-      <img src="./static/images/kick_uncond.png" alt="Image 2" class="content-image">
-      <img src="./static/images/walk_cond.png" alt="Image 3" class="content-image">
-      <img src="./static/images/walk_cunond.png" alt="Image 4" class="content-image">
+  <div class="container">
+    <h2 class="title is-2">Conditional Generation from unconditional model</h2>
+    <p class="description">This section displays outputs generated using the procedure described in the paper relying solely on an unconditional model. We generated 10 outputs for each class. </p>
+    <div class="image-grid-10">
+      <!-- Images 1 to 10 (Row 1) -->
+      <img src="./static/images/mnist/0/mnist_0_0_step_320.png" alt="Conditional Generation Image 1">
+      <img src="./static/images//mnist/0/mnist_0_13_step_320.png" alt="Conditional Generation Image 2">
+      <img src="./static/images//mnist/0/mnist_0_19_step_320.png" alt="Conditional Generation Image 3">
+      <img src="./static/images//mnist/0/mnist_0_1_step_320.png" alt="Conditional Generation Image 4">
+      <img src="./static/images//mnist/0/mnist_0_2_step_320.png" alt="Conditional Generation Image 5">
+      <img src="./static/images//mnist/0/mnist_0_3_step_320.png" alt="Conditional Generation Image 6">
+      <img src="./static/images//mnist/0/mnist_0_4_step_320.png" alt="Conditional Generation Image 7">
+      <img src="./static/images//mnist/0/mnist_0_5_step_320.png" alt="Conditional Generation Image 8">
+      <img src="./static/images//mnist/0/mnist_0_6_step_320.png" alt="Conditional Generation Image 9">
+      <img src="./static/images//mnist/0/mnist_0_7_step_320.png" alt="Conditional Generation Image 10">
+      <!-- Images 11 to 20 (Row 2) -->
+      <img src="./static/images/mnist/1/mnist_1_19_step_320.png" alt="Conditional Generation Image 11">
+      <img src="./static/images/mnist/1/mnist_1_20_step_320.png" alt="Conditional Generation Image 12">
+      <img src="./static/images/mnist/1/mnist_1_21_step_320.png" alt="Conditional Generation Image 13">
+      <img src="./static/images/mnist/1/mnist_1_22_step_320.png" alt="Conditional Generation Image 14">
+      <img src="./static/images/mnist/1/mnist_1_23_step_320.png" alt="Conditional Generation Image 15">
+      <img src="./static/images/mnist/1/mnist_1_24_step_320.png" alt="Conditional Generation Image 16">
+      <img src="./static/images/mnist/1/mnist_1_26_step_320.png" alt="Conditional Generation Image 17">
+      <img src="./static/images/mnist/1/mnist_1_27_step_320.png" alt="Conditional Generation Image 18">
+      <img src="./static/images/mnist/1/mnist_1_28_step_320.png" alt="Conditional Generation Image 19">
+      <img src="./static/images/mnist/1/mnist_1_29_step_320.png" alt="Conditional Generation Image 20">
+      <!-- Images 21 to 30 (Row 3) -->
+      <img src="./static/images/mnist/2/mnist_2_10_step_320.png" alt="Conditional Generation Image 21">
+      <img src="./static/images/mnist/2/mnist_2_28_step_320.png" alt="Conditional Generation Image 22">
+      <img src="./static/images/mnist/2/mnist_2_30_step_320.png" alt="Conditional Generation Image 23">
+      <img src="./static/images/mnist/2/mnist_2_35_step_320.png" alt="Conditional Generation Image 24">
+      <img src="./static/images/mnist/2/mnist_2_37_step_320.png" alt="Conditional Generation Image 25">
+      <img src="./static/images/mnist/2/mnist_2_39_step_320.png" alt="Conditional Generation Image 26">
+      <img src="./static/images/mnist/2/mnist_2_3_step_320.png" alt="Conditional Generation Image 27">
+      <img src="./static/images/mnist/2/mnist_2_5_step_320.png" alt="Conditional Generation Image 28">
+      <img src="./static/images/mnist/2/mnist_2_6_step_320.png" alt="Conditional Generation Image 29">
+      <img src="./static/images/mnist/2/mnist_2_9_step_320.png" alt="Conditional Generation Image 30">
+      <!-- Images 31 to 40 (Row 4) -->
+      <img src="./static/images/mnist/3/mnist_3_13_step_320.png" alt="Conditional Generation Image 31">
+      <img src="./static/images/mnist/3/mnist_3_16_step_320.png" alt="Conditional Generation Image 32">
+      <img src="./static/images/mnist/3/mnist_3_17_step_320.png" alt="Conditional Generation Image 33">
+      <img src="./static/images/mnist/3/mnist_3_18_step_320.png" alt="Conditional Generation Image 34">
+      <img src="./static/images/mnist/3/mnist_3_19_step_320.png" alt="Conditional Generation Image 35">
+      <img src="./static/images/mnist/3/mnist_3_20_step_320.png" alt="Conditional Generation Image 36">
+      <img src="./static/images/mnist/3/mnist_3_21_step_320.png" alt="Conditional Generation Image 37">
+      <img src="./static/images/mnist/3/mnist_3_22_step_320.png" alt="Conditional Generation Image 38">
+      <img src="./static/images/mnist/3/mnist_3_23_step_320.png" alt="Conditional Generation Image 39">
+      <img src="./static/images/mnist/3/mnist_3_25_step_320.png" alt="Conditional Generation Image 40">
+      <!-- Images 41 to 50 (Row 5) -->
+      <img src="./static/images/mnist/4/mnist_4_26_step_320.png" alt="Conditional Generation Image 41">
+      <img src="./static/images/mnist/4/mnist_4_27_step_320.png" alt="Conditional Generation Image 42">
+      <img src="./static/images/mnist/4/mnist_4_28_step_320.png" alt="Conditional Generation Image 43">
+      <img src="./static/images/mnist/4/mnist_4_29_step_320.png" alt="Conditional Generation Image 44">
+      <img src="./static/images/mnist/4/mnist_4_30_step_320.png" alt="Conditional Generation Image 45">
+      <img src="./static/images/mnist/4/mnist_4_32_step_320.png" alt="Conditional Generation Image 46">
+      <img src="./static/images/mnist/4/mnist_4_33_step_320.png" alt="Conditional Generation Image 47">
+      <img src="./static/images/mnist/4/mnist_4_34_step_320.png" alt="Conditional Generation Image 48">
+      <img src="./static/images/mnist/4/mnist_4_35_step_320.png" alt="Conditional Generation Image 49">
+      <img src="./static/images/mnist/4/mnist_4_36_step_320.png" alt="Conditional Generation Image 50">
+      <!-- Images 41 to 50 (Row 5) -->
+      <img src="./static/images/mnist/5/mnist_5_14_step_320.png" alt="Conditional Generation Image 41">
+      <img src="./static/images/mnist/5/mnist_5_15_step_320.png" alt="Conditional Generation Image 42">
+      <img src="./static/images/mnist/5/mnist_5_16_step_320.png" alt="Conditional Generation Image 43">
+      <img src="./static/images/mnist/5/mnist_5_22_step_320.png" alt="Conditional Generation Image 44">
+      <img src="./static/images/mnist/5/mnist_5_23_step_320.png" alt="Conditional Generation Image 45">
+      <img src="./static/images/mnist/5/mnist_5_25_step_320.png" alt="Conditional Generation Image 46">
+      <img src="./static/images/mnist/5/mnist_5_27_step_320.png" alt="Conditional Generation Image 47">
+      <img src="./static/images/mnist/5/mnist_5_29_step_320.png" alt="Conditional Generation Image 48">
+      <img src="./static/images/mnist/5/mnist_5_2_step_320.png" alt="Conditional Generation Image 49">
+      <img src="./static/images/mnist/5/mnist_5_33_step_320.png" alt="Conditional Generation Image 50">
+       <!-- Images 41 to 50 (Row 5) -->
+       <img src="./static/images/mnist/6/mnist_6_15_step_320.png" alt="Conditional Generation Image 41">
+       <img src="./static/images/mnist/6/mnist_6_18_step_320.png" alt="Conditional Generation Image 42">
+       <img src="./static/images/mnist/6/mnist_6_19_step_320.png" alt="Conditional Generation Image 43">
+       <img src="./static/images/mnist/6/mnist_6_20_step_320.png" alt="Conditional Generation Image 44">
+       <img src="./static/images/mnist/6/mnist_6_24_step_320.png" alt="Conditional Generation Image 45">
+       <img src="./static/images/mnist/6/mnist_6_25_step_320.png" alt="Conditional Generation Image 46">
+       <img src="./static/images/mnist/6/mnist_6_27_step_320.png" alt="Conditional Generation Image 47">
+       <img src="./static/images/mnist/6/mnist_6_30_step_320.png" alt="Conditional Generation Image 48">
+       <img src="./static/images/mnist/6/mnist_6_31_step_320.png" alt="Conditional Generation Image 49">
+       <img src="./static/images/mnist/6/mnist_6_33_step_320.png" alt="Conditional Generation Image 50">
+        <!-- Images 41 to 50 (Row 5) -->
+      <img src="./static/images/mnist/7/mnist_7_10_step_320.png" alt="Conditional Generation Image 41">
+      <img src="./static/images/mnist/7/mnist_7_11_step_320.png" alt="Conditional Generation Image 42">
+      <img src="./static/images/mnist/7/mnist_7_12_step_320.png" alt="Conditional Generation Image 43">
+      <img src="./static/images/mnist/7/mnist_7_13_step_320.png" alt="Conditional Generation Image 44">
+      <img src="./static/images/mnist/7/mnist_7_14_step_320.png" alt="Conditional Generation Image 45">
+      <img src="./static/images/mnist/7/mnist_7_15_step_320.png" alt="Conditional Generation Image 46">
+      <img src="./static/images/mnist/7/mnist_7_16_step_320.png" alt="Conditional Generation Image 47">
+      <img src="./static/images/mnist/7/mnist_7_17_step_320.png" alt="Conditional Generation Image 48">
+      <img src="./static/images/mnist/7/mnist_7_18_step_320.png" alt="Conditional Generation Image 49">
+      <img src="./static/images/mnist/7/mnist_7_19_step_320.png" alt="Conditional Generation Image 50">
+      <!-- Images 41 to 50 (Row 5) -->
+      <img src="./static/images/mnist/8/mnist_8_0_step_320.png" alt="Conditional Generation Image 41">
+      <img src="./static/images/mnist/8/mnist_8_10_step_320.png" alt="Conditional Generation Image 42">
+      <img src="./static/images/mnist/8/mnist_8_11_step_320.png" alt="Conditional Generation Image 43">
+      <img src="./static/images/mnist/8/mnist_8_12_step_320.png" alt="Conditional Generation Image 44">
+      <img src="./static/images/mnist/8/mnist_8_13_step_320.png" alt="Conditional Generation Image 45">
+      <img src="./static/images/mnist/8/mnist_8_1_step_320.png" alt="Conditional Generation Image 46">
+      <img src="./static/images/mnist/8/mnist_8_28_step_320.png" alt="Conditional Generation Image 47">
+      <img src="./static/images/mnist/8/mnist_8_29_step_320.png" alt="Conditional Generation Image 48">
+      <img src="./static/images/mnist/8/mnist_8_30_step_320.png" alt="Conditional Generation Image 49">
+      <img src="./static/images/mnist/8/mnist_8_31_step_320.png" alt="Conditional Generation Image 50">
+      <!-- Images 41 to 50 (Row 5) -->
+      <img src="./static/images/mnist/9/mnist_9_10_step_320.png" alt="Conditional Generation Image 41">
+      <img src="./static/images/mnist/9/mnist_9_13_step_320.png" alt="Conditional Generation Image 42">
+      <img src="./static/images/mnist/9/mnist_9_24_step_320.png" alt="Conditional Generation Image 43">
+      <img src="./static/images/mnist/9/mnist_9_25_step_320.png" alt="Conditional Generation Image 44">
+      <img src="./static/images/mnist/9/mnist_9_30_step_320.png" alt="Conditional Generation Image 45">
+      <img src="./static/images/mnist/9/mnist_9_34_step_320.png" alt="Conditional Generation Image 46">
+      <img src="./static/images/mnist/9/mnist_9_39_step_320.png" alt="Conditional Generation Image 47">
+      <img src="./static/images/mnist/9/mnist_9_6_step_320.png" alt="Conditional Generation Image 48">
+      <img src="./static/images/mnist/9/mnist_9_7_step_320.png" alt="Conditional Generation Image 49">
+      <img src="./static/images/mnist/9/mnist_9_8_step_320.png" alt="Conditional Generation Image 50">
     </div>
   </div>
 </section>
-
 
 
 </body>
